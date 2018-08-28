@@ -1,0 +1,89 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add User</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+      <!-- Email error block -->
+      <div *ngIf="addForm.controls.email.invalid && addForm.controls.email.touched"
+          class="col-sm-3 text-danger"> 
+          <div *ngIf = "addForm.controls.email.errors?.required">
+              Email field can't be blank
+          </div> 
+          <div *ngIf = "addForm.controls.email.errors?.pattern">
+              The email id doesn't seem right
+          </div> 
+       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+      <!-- First name error block -->
+      <div *ngIf="(addForm.controls.firstName.invalid && addForm.controls.firstName.touched)"
+          class="col-sm-3 text-danger">
+          <div *ngIf = "addForm.controls.firstName.errors?.required">
+              First name can't be blank
+          </div> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+      <!-- Last name error block -->
+      <div *ngIf="(addForm.controls.lastName.invalid && addForm.controls.lastName.touched)"
+          class="col-sm-3 text-danger">
+          <div *ngIf = "addForm.controls.lastName.errors?.required">
+              Last name can't be blank
+          </div> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input formControlName="age" placeholder="Age" name="age" class="form-control" id="age" type="number">
+      <!-- age error block -->
+      <div *ngIf="(addForm.controls.age.invalid && addForm.controls.age.touched)"
+          class="col-sm-3 text-danger">
+          <div *ngIf = "addForm.controls.age.errors?.required">
+              Age field can't be blank
+          </div> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input formControlName="salary" placeholder="Salary" name="salary" class="form-control" id="salary" type="number">
+      <!-- salary error block -->
+      <div *ngIf="(addForm.controls.salary.invalid && addForm.controls.salary.touched)"
+          class="col-sm-3 text-danger">
+          <div *ngIf = "addForm.controls.salary.errors?.required">
+              Salary field can't be blank
+          </div>         
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input formControlName="username" placeholder="Username" name="username" class="form-control" id="username">
+      <!-- username error block -->
+      <div *ngIf="(addForm.controls.username.invalid && addForm.controls.username.touched)"
+          class="col-sm-3 text-danger">     
+        Username needs to be more than 8 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input formControlName="password" placeholder="Password" name="password" class="form-control" id="password">
+      <!-- password error block -->
+      <div *ngIf="(addForm.controls.password.invalid && addForm.controls.password.touched)"
+          class="col-sm-3 text-danger">     
+        Password needs to be more than 8 characters
+      </div>
+    </div>
+
+    <button class="btn btn-success" [disabled] = "!addForm.valid" >Save</button>
+  </form>
+</div>
